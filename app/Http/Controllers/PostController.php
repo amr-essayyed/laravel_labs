@@ -37,7 +37,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         Post::create(array_merge ($request->all(),['user_id'=>1]));
-        return '{msg:"Store a newly created resource in storage."}';
+        return redirect()->route('posts.index')
+                     ->with('status', 'Post Created.');
     }
 
     /**
